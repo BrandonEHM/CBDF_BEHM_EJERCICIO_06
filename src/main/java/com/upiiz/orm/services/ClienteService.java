@@ -21,4 +21,24 @@ public class ClienteService {
     public ClienteEntity guardarCliente(ClienteEntity clienteEntity) {
         return clienteRepository.save(clienteEntity);
     }
+
+
+    // Actualizar un cliente
+    public ClienteEntity actualizarCliente(ClienteEntity clienteEntity) {
+        if (clienteRepository.existsById(clienteEntity.getId())) {
+            return clienteRepository.save(clienteEntity);
+        }
+        return null;
+    }
+
+    // Eliminar un cliente
+    public boolean eliminarCliente(Long id) {
+        if (clienteRepository.existsById(id)) {
+            clienteRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
 }
